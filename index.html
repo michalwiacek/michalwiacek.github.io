@@ -1,1 +1,28 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        p {
+            font-size: 20px
+        }
+        @supports (display: grid) {
+        p {
+            font-size: 60px
+        }
+        @media (max-width: 1200px) {
+            p {
+                font-size: 40px
+            }
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+Some text
+</body>
+</html>
