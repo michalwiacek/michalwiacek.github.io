@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>my resume page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen" /> 
+    <title>Sample Card UI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-        <header class="header">Michał Wiącek</header>
-
-        <article class="content">
-            <h1>Some things I made</h1>
-            <p>Tutaj będę wrzucał swoje projekty.</p>
-
-            <p>To będzie takie moje programistyczne portfolio</p>
-        </article>
-
-        <div class="block-a">Block A</div>
-        <div class="block-b">Block B</div>
-        <div class="block-c">Block C</div>
-        <footer class="footer">My footer</footer>
+<section class="sec1"></section>
+<section class="sec2"></section>
+    <div class="card">
+        <div class="imgBox"><img src="image.jpg"></div>
+        <div class="details">
+            <div class="content">
+                <h3>Michał Wiącek<br><span>Software Developer</span></h3>
+                <ul>
+                    <li><a href="mailto:micxhal.wiaxcek.90@gmailx.com" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/michalwiacek"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/miwiacek"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/miwiacek/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="./mwcv.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></li>
+                </ul>
+                <h4>feel free to contact me anytime</h4>
+            </div>
+        </div>
     </div>
 </body>
 </html>
