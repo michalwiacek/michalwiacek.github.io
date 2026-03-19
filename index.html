@@ -1,30 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-<body>
-<section class="sec1"></section>
-<section class="sec2"></section>
-    <div class="card">
-        <div class="imgBox"><img src="image.jpg"></div>
-        <div class="details">
-            <div class="content">
-                <h3>Michał Wiącek<br><span>Software Developer</span></h3>
-                <ul>
-                    <li><a href="mailto:micxhal.wiaxcek.90@gmailx.com" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-                    <li><a href="https://github.com/michalwiacek"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/miwiacek"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.instagram.com/michalwiacek3/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="./mwcv.pdf" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></li>
-                </ul>
-                <a href="https://michalwiacek.github.io/portfolio-angular/">checkout my alpha portfolio site</a>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Michał Wiącek — Developer Tools, APIs, Products</title>
+    <meta
+      name="description"
+      content="Michał Wiącek builds developer tools, API workflows, and practical software products."
+    />
+    <meta property="og:title" content="Michał Wiącek" />
+    <meta
+      property="og:description"
+      content="Developer tools, API workflows, and practical software products."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      name="theme-color"
+      content="#0b1020"
+    />
+
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #121933;
+        --card: rgba(255, 255, 255, 0.06);
+        --card-border: rgba(255, 255, 255, 0.12);
+        --text: #f5f7fb;
+        --muted: #a8b2d1;
+        --accent: #7c9cff;
+        --accent-2: #7ef0c7;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        --radius: 22px;
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(124, 156, 255, 0.16), transparent 32%),
+          radial-gradient(circle at top right, rgba(126, 240, 199, 0.12), transparent 28%),
+          linear-gradient(180deg, #0b1020 0%, #0b1020 100%);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 56px 0 24px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .section-card,
+      .project-card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+        border-radius: var(--radius);
+      }
+
+      .hero-copy {
+        padding: 42px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(124, 156, 255, 0.12);
+        color: #dbe4ff;
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent-2);
+        box-shadow: 0 0 20px rgba(126, 240, 199, 0.7);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        max-width: 12ch;
+      }
+
+      .lead {
+        font-size: 1.08rem;
+        color: var(--muted);
+        margin: 20px 0 28px;
+        max-width: 62ch;
+      }
+
+      .actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), #9c7cff);
+        color: white;
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--card-border);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .hero-card {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+      }
+
+      .terminal {
+        background: #070b16;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 18px;
+        overflow: hidden;
+      }
+
+      .terminal-header {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .terminal-header span {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+
+      .terminal-header span:nth-child(1) {
+        background: #ff6b6b;
+      }
+
+      .terminal-header span:nth-child(2) {
+        background: #ffd166;
+      }
+
+      .terminal-header span:nth-child(3) {
+        background: #06d6a0;
+      }
+
+      .terminal pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.92rem;
+        color: #d8e1ff;
+      }
+
+      .section {
+        padding: 36px 0;
+      }
+
+      .section-card {
+        padding: 30px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 56ch;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+      }
+
+      .featured-grid,
+      .project-grid,
+      .mini-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .mini-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        padding: 24px;
+      }
+
+      .project-card .tag {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        color: #dce5ff;
+        background: rgba(124, 156, 255, 0.14);
+        margin-bottom: 14px;
+      }
+
+      .project-card p,
+      .feature-list li,
+      .muted {
+        color: var(--muted);
+      }
+
+      .project-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .project-links a {
+        color: var(--accent-2);
+        font-weight: 600;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 18px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .feature-list li {
+        position: relative;
+        padding-left: 18px;
+      }
+
+      .feature-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.7em;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--accent-2);
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .chip {
+        border: 1px solid var(--card-border);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      footer {
+        padding: 30px 0 60px;
+        color: var(--muted);
+      }
+
+      .footer-card {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a:hover,
+      .project-links a:hover {
+        color: var(--text);
+      }
+
+      @media (max-width: 960px) {
+        .hero-grid,
+        .featured-grid,
+        .project-grid,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-card,
+        .section-card,
+        .project-card {
+          padding: 24px;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+        }
+
+        h1 {
+          max-width: 100%;
+        }
+
+        .actions {
+          width: 100%;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="container">
+      <nav class="nav">
+        <a class="brand" href="#">Michał Wiącek</a>
+        <div class="nav-links">
+          <a href="#orion">Orion CLI</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
-    </div>
-</body>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="dot"></span>
+              Developer tools, APIs, practical products
+            </div>
+
+            <h1>Building useful software with less friction.</h1>
+
+            <p class="lead">
+              I’m a backend engineer focused on developer tooling, API workflows,
+              and product-minded software. Right now I’m building Orion CLI and
+              exploring tools that work well for both humans and AI-assisted workflows.
+            </p>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="https://github.com/michalwiacek/orion-cli" target="_blank" rel="noreferrer">
+                View Orion CLI
+              </a>
+              <a class="btn btn-secondary" href="https://github.com/michalwiacek" target="_blank" rel="noreferrer">
+                GitHub Profile
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 14px;">Orion CLI</h3>
+              <p class="muted" style="margin-top: 0;">
+                A task-first CLI for working with APIs and business actions from the terminal.
+              </p>
+            </div>
+
+            <div class="terminal" aria-label="Orion CLI example">
+              <div class="terminal-header">
+                <span></span><span></span><span></span>
+              </div>
+              <pre>
+$ orion search offers
+$ orion describe post:/offers/search
+$ orion call get:/offers/123
+$ orion auth login</pre>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section container" id="orion">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h2>Featured project</h2>
+            </div>
+            <p>
+              Orion CLI is the project I want this site to point to first. It’s the clearest
+              expression of what I build: practical tooling for API-heavy systems.
+            </p>
+          </div>
+
+          <div class="featured-grid">
+            <div class="project-card">
+              <span class="tag">Featured</span>
+              <h3 style="font-size: 1.7rem; margin-bottom: 10px;">Orion CLI</h3>
+              <p>
+                A terminal-first tool for exploring, describing, and executing API-driven workflows.
+                It aims to reduce friction compared to raw curl and make common actions easier
+                to run, inspect, and automate.
+              </p>
+
+              <ul class="feature-list">
+                <li>Task-first workflows instead of raw endpoint wrangling</li>
+                <li>Designed to fit API-heavy and business-action-oriented systems</li>
+                <li>Good foundation for AI-assisted and scriptable workflows</li>
+              </ul>
+
+              <div class="project-links">
+                <a href="https://github.com/michalwiacek/orion-cli" target="_blank" rel="noreferrer">Source code</a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <span class="tag">Focus</span>
+              <h3 style="font-size: 1.3rem; margin-bottom: 10px;">What I care about</h3>
+              <div class="stack">
+                <span class="chip">Backend engineering</span>
+                <span class="chip">Developer experience</span>
+                <span class="chip">API tooling</span>
+                <span class="chip">CLI design</span>
+                <span class="chip">Automation</span>
+                <span class="chip">Product thinking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="projects">
+        <div class="section-head">
+          <div>
+            <h2>Selected projects</h2>
+          </div>
+          <p>
+            A small set of projects that reflect where I’m going: useful software, strong backend foundations, and products with clear utility.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <span class="tag">CLI / OSS</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Orion CLI</h3>
+            <p>
+              Task-first command-line workflows for APIs and business actions.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/michalwiacek/orion-cli" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="tag">Product / WIP</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Gunarena</h3>
+            <p>
+              A marketplace/platform concept aimed at the Polish civilian firearms space.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <span class="tag">Backend / Experiments</span>
+            <h3 style="font-size: 1.35rem; margin-bottom: 10px;">Tooling & automation</h3>
+            <p>
+              API workflows, backend experiments, automation scripts, and product validation work.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/michalwiacek" target="_blank" rel="noreferrer">See more</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="about">
+        <div class="section-card">
+          <div class="section-head">
+            <div>
+              <h2>About</h2>
+            </div>
+            <p>
+              I build software from the backend outward — with a bias toward tools, workflows, and products that actually help people get things done.
+            </p>
+          </div>
+
+          <div class="mini-grid">
+            <div class="project-card">
+              <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Backend first</h3>
+              <p>
+                I’m strongest where systems, APIs, reliability, and implementation detail matter.
+              </p>
+            </div>
+
+            <div class="project-card">
+              <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Product minded</h3>
+              <p>
+                I care about utility, not just architecture. A tool should make something genuinely easier.
+              </p>
+            </div>
+
+            <div class="project-card">
+              <h3 style="font-size: 1.2rem; margin-bottom: 10px;">AI-aware workflows</h3>
+              <p>
+                I’m interested in tooling that works cleanly both for developers and coding agents.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container" id="contact">
+      <div class="footer-card">
+        <div>
+          <strong style="display: block; color: var(--text); margin-bottom: 6px;">Michał Wiącek</strong>
+          <span>Backend engineer building useful developer tools and products.</span>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/michalwiacek" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/mwiacek/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:michal.wiacek@protonmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
